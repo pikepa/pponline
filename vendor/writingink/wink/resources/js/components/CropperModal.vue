@@ -1,4 +1,4 @@
-<script type="text/ecmascript-6">
+<script type="text/ecmascript">
 
     export default {
         props: ['image', 'viewport', 'boundary'],
@@ -133,6 +133,9 @@
 
 <template>
     <modal @close="cancel">
+        <div v-if="uploading" class="absolute pin bg-black-shade z-50 flex items-center justify-center">
+            <preloader class="text-green"></preloader>
+        </div>
         <div :style="{'height':viewport}">
             <vue-croppie
                     ref="croppieRef"

@@ -1,4 +1,4 @@
-<script type="text/ecmascript-6">
+<script type="text/ecmascript">
     export default {
         data() {
             return {}
@@ -49,7 +49,7 @@
 <template>
     <transition name="modal">
         <div class="z-50 fixed pin overflow-y-scroll modal-mask" @click="handleClicks">
-            <div class="bg-contrast rounded shadow-lg max-w-md mx-auto my-10 p-5 modal-container">
+            <div class="bg-contrast relative rounded shadow-lg max-w-md mx-auto my-10 p-5 modal-container">
                 <slot/>
             </div>
         </div>

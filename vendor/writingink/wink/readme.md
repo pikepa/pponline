@@ -44,11 +44,27 @@ Before creating a blog post, make sure you have your image directory set up corr
 php artisan storage:link
 ```
 
-(optional) Visit https://unsplash.com/oauth/applications to create a new unsplash app. Grab the access key and update `config/services.php`:
+If you want to upload images to S3 with cache-control header, add `CacheControl` option in `config/filesystems.php`. Also, you can specify CDN base url such as CloudFront.
+
+```php
+'s3' => [
+    'driver' => 's3',
+    'key' => env('AWS_ACCESS_KEY_ID'),
+    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+    'region' => env('AWS_DEFAULT_REGION'),
+    'bucket' => env('AWS_BUCKET'),
+    'url' => env('CDN_URL'),
+    'options' => [
+        'CacheControl' => 'public, max-age=315360000'
+    ],
+],
+```
+
+(optional) Visit https://unsplash.com/oauth/applications to create a new unsplash app. Grab the 'Access Key' and add it to your `.env` file as `UNSPLASH_ACCESS_KEY`. Lastly, add unsplash to your `config/services.php` file:
 
 ```php
 'unsplash' => [
-    'key' => 'UNSPLASH_ACCESS_KEY',
+    'key' => env('UNSPLASH_ACCESS_KEY'),
 ],
 ```
 
